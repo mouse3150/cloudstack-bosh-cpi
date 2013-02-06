@@ -101,40 +101,40 @@ This is a sample of how CloudStack specific properties are used in a BOSH deploy
 
 
 ## Example of micro bosh deployment(A successful deployement list):
----
-name: micro-bosh-cloudstack-ly-0.0.1
-network:
-  name: nginx_network
-  type: vip
-  ip: 168.1.41.197
-  cloud_properties: {}
-resources:
-  persistent_disk: Medium
-  cloud_properties:
-    instance_type: 'Medium Instance'
-    disk: 5120
-cloud:
-  plugin: cloudstack
-  properties:
-    cloudstack:
-      cloudstack_host: 168.1.41.1
-      ssh_user: root
-      ssh_password: root
-      cloudstack_port: 8080
-      cloudstack_api_key: "XX0jrqLQwAzwsctzzQDo_sR5TK04TcNBI0erFC7Hy8Zr_QVf-FwbSb-Tp7jPFfg1tvEnWkbQ1KDgr11ZpNBKSQ"
-      cloudstack_secret_access_key: "XpbTAZFrLHQdO_ohdMW7PFNQjMBLbWpucNwtEgZJ5AwWdajPzpd7QY1b698fHVNBEgkPN3V4zgC1WnIG4RDyzQ"
-      cloudstack_scheme: http
-      default_security_groups: ["default"]
-      zone_id: '594f2bca-fe25-49a5-a0af-d483f07e02ed'
-    registry:
-      endpoint: http://admin:admin@168.1.43.121:25889
-      user: admin
-      password: admin
-    stemcell:
-      url: 'http://168.1.41.105/micro-bosh.vhd.bz2'
-env:
-  bosh:
-    password: c1oudc0w
+  ---
+  name: micro-bosh-cloudstack-ly-0.0.1
+  network:
+    name: nginx_network
+    type: vip
+    ip: 168.1.41.197
+    cloud_properties: {}
+  resources:
+    persistent_disk: Medium
+    cloud_properties:
+      instance_type: 'Medium Instance'
+      disk: 5120
+  cloud:
+    plugin: cloudstack
+    properties:
+      cloudstack:
+        cloudstack_host: 168.1.41.1
+        ssh_user: root
+        ssh_password: root
+        cloudstack_port: 8080
+        cloudstack_api_key: "XX0jrqLQwAzwsctzzQDo_sR5TK04TcNBI0erFC7Hy8Zr_QVf-FwbSb-Tp7jPFfg1tvEnWkbQ1KDgr11ZpNBKSQ"
+        cloudstack_secret_access_key: "XpbTAZFrLHQdO_ohdMW7PFNQjMBLbWpucNwtEgZJ5AwWdajPzpd7QY1b698fHVNBEgkPN3V4zgC1WnIG4RDyzQ"
+        cloudstack_scheme: http
+        default_security_groups: ["default"]
+        zone_id: '594f2bca-fe25-49a5-a0af-d483f07e02ed'
+      registry:
+        endpoint: http://admin:admin@168.1.43.121:25889
+        user: admin
+        password: admin
+      stemcell:
+        url: 'http://168.1.41.105/micro-bosh.vhd.bz2'
+  env:
+    bosh:
+      password: c1oudc0w
     
 ## Example of cloudfoundry deployment list.
 
