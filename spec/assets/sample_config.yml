@@ -1,0 +1,14 @@
+---
+cloudstack:
+  cloudstack_host: "168.1.43.14"
+  cloudstack_port: 8080
+  cloudstack_api_key: "hHdIgGdz6V-6I9Dc0dqhgUKutGJX-7_XTurvjd89SWAXPFiMZEy_Gb0uGfzbTyzS1rrdcwwZq81nxWS3UW8IcQ"
+  cloudstack_secret_access_key: "zKao312dFgDKFdSI04Kh2axSuiWDXLDXj848GFxXRvRZPjiEuA6UfQq4uGdEHxrvuaYoNpv3_SBWfRqX6lPIwg"
+  cloudstack_scheme: "http"
+  default_key_name: default
+  default_security_groups: ["default"]
+
+registry:
+  endpoint: http://127.0.0.1:25695
+  user: admin
+  password: admin

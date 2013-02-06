@@ -1,0 +1,14 @@
+#  Authors
+# =========
+#
+# This is a reasonably complete list of everyone who has committed
+# code to the Cloudstack BOSH CPI project. The list is just ordered by first
+# name here, but the file is (and should be kept) YAML-formatted.
+#
+# Please feel free to add any personal details.
+
+---
+- Zhangguolei        { email: zhanggl@tongtech.com }
+- Chenhao        	 { email: chenhao@tongtech.com }
+- Liyun        		 { email: liyun@tongtech.com }
+- Chengfujuan        { email: chengfj@tongtech.com }

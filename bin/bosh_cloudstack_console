@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+# Copyright (c) 2012 Tongtech, Inc.
+
+# Usage example:
+# irb(main):001:0> cpi.create_vm("test",
+#                                "natty-server-cloudimg-amd64",
+#                                {"instance_type" => "m1.tiny"},
+#                                {"default" => {"type" => "dynamic", "cloud_properties" => {"security_groups" => ["name" => "default"]}}},
+#                                [],
+#                                {"foo" =>"bar"})
+
+gemfile = File.expand_path("../../Gemfile", __FILE__)
+
+if File.exists?(gemfile)
+  ENV["BUNDLE_GEMFILE"] = gemfile
+  require "rubygems"
+  require "bundler/setup"
+end
+
+$:.unshift(File.expand_path("../../lib", __FILE__))
+require "bosh_cloudstack_cpi"
+require "irb"
+require "irb/completion"
+require "ostruct"
+require "optparse"
+
+config_file = nil
+
+opts_parser = OptionParser.new do |opts|
+  opts.on("-c", "--config FILE") { |file| config_file = file }
+end
+
+opts_parser.parse!
+
+unless config_file
+  puts opts_parser
+  exit(1)
+end
+
+@config = YAML.load_file(config_file)
+
+module ConsoleHelpers
+  def cpi
+    @cpi ||= Bosh::CloudStackCloud::Cloud.new(@config)
+  end
+
+  def cloudstack
+    cpi.cloudstack
+  end
+
+  def glance
+    cpi.glance
+  end
+
+  def registry
+    cpi.registry
+  end
+end
+
+cloud_config = OpenStruct.new(:logger => Logger.new(STDOUT))
+
+Bosh::Clouds::Config.configure(cloud_config)
+
+include ConsoleHelpers
+
+begin
+  require 'ruby-debug'
+  puts "=> Debugger enabled"
+rescue LoadError
+  puts "=> ruby-debug not found, debugger disabled"
+end
+
+puts "=> Welcome to BOSH CloudStack CPI console"
+puts "You can use 'cpi' to access CPI methods"
+puts "You can use 'cloudstack' to access Fog::Compute::CloudStack methods"
+
+IRB.start
